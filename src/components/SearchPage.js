@@ -1,8 +1,18 @@
-import { useState } from 'react';
+import {useRef} from 'react';
 
-const SearchPage = ({}) =>
-	<>
-		<input type="text" onChange={() => {}}/>
-	</>
+const SearchPage = ({onHandleSearch}) => {
+	const inputRef = useRef('');
+	const handleSearch = (e) => {
+		const searchTerm = inputRef.current.value;
+		return onHandleSearch(searchTerm);
+	}
+
+	return (
+		<>
+			<input type="text" ref={inputRef} />
+			<button onClick={handleSearch}>search</button>
+		</>
+	);
+}
 
 export default SearchPage;

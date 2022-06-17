@@ -11,22 +11,22 @@ import './App.css';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-function App() {
+const App = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   useEffect(() => {
+    console.log('SEARCH TERM', searchTerm, props)
     if (searchTerm) {
       fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
-        .then(response => {
-          console.log('response', response)
-          return response.ok && response.json()
+        .then(response => response.ok && response.json())
+        .then(json => {
+          props.history.push('results')
+          setResults(json.Search);
         })
-        .then(json => setResults(json.Search))
         .catch(err => console.error('Problems, son:', err))
     }
   }, [searchTerm]);
 
-  console.log('RESULTS', results)
   return (
     <div className="App">
         <p>Movie search</p>
@@ -35,7 +35,7 @@ function App() {
           <SearchPage onHandleSearch={setSearchTerm}/>
         </Route>
         <Route exact path="/results">
-          <ResultsPage />
+          <ResultsPage results={results} />
         </Route>
         <Redirect to="/search" />
       </Switch>
