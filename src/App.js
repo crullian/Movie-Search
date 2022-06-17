@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import {
+  Route,
+  Switch,
+  Redirect
+} from 'react-router-dom';
+import { withRouter } from 'react-router';
+import SearchPage from './components/SearchPage';
+import ResultsPage from './components/ResultsPage';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p>Movie search</p>
+      <Switch>
+        <Route exact path="/search">
+          <SearchPage />
+        </Route>
+        <Route exact path="/results">
+          <ResultsPage />
+        </Route>
+        <Redirect to="/search" />
+      </Switch>
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
