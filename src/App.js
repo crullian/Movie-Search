@@ -14,16 +14,18 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const App = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
+
   useEffect(() => {
+    const fetchResults = async () => {
+      const data = await fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`);
+      const json = await data.json();
+      setResults(json.Search);
+      props.history.push('results');
+    }
+
     console.log('SEARCH TERM', searchTerm, props)
     if (searchTerm) {
-      fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${searchTerm}`)
-        .then(response => response.ok && response.json())
-        .then(json => {
-          props.history.push('results')
-          setResults(json.Search);
-        })
-        .catch(err => console.error('Problems, son:', err))
+      fetchResults(); 
     }
   }, [searchTerm]);
 

@@ -17,7 +17,7 @@ SearchPage = ({searchHandler: () => {})
 	</SearchPageWrapper>
 
 
-ResultPage = ({results: results[]})
+ResultPage = ({results: result[]})
 	<ResultPageWrapper>
 		<ResultsList /> || emptyState
 		<ResultDetailModal />
