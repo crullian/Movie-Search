@@ -12,7 +12,6 @@ import './App.css';
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 function App() {
-  console.log('API KEY', API_KEY)
   const [searchTerm, setSearchTerm] = useState('');
   const [results, setResults] = useState([]);
   useEffect(() => {
