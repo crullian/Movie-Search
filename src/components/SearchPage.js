@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 const SearchPage = ({}) =>
-	<p>SearchPage</p>
+	<>
+		<input type="text" onChange={() => {}}/>
+	</>
 
 export default SearchPage;

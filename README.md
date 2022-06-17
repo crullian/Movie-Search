@@ -6,6 +6,8 @@
 	<ResultPage route=/results />
 </MovieSearchAppContainer>
 
+MovieSearchAppContainer - receives search term and uses it to fetch results, and passes results to results page
+
 
 SearchPage = ({searchHandler: () => {})
 	<SearchPageWrapper>
