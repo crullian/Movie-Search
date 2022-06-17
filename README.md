@@ -1,4 +1,38 @@
-# Getting Started with Create React App
+# Getting Started with Movie Search
+
+```
+<MovieSearchAppContainer>
+	<SearchPage route=/search />
+	<ResultPage route=/results />
+</MovieSearchAppContainer>
+
+
+SearchPage = ({searchHandler: () => {})
+	<SearchPageWrapper>
+		<Text />
+		<input />
+		<SearchButton />
+	</SearchPageWrapper>
+
+
+ResultPage = ({results: results[]})
+	<ResultPageWrapper>
+		<ResultsList /> || emptyState
+		<ResultDetailModal />
+		<BackToSearchPageLink />
+	</ResultPageWrapper>
+
+ResultsList = 
+	<GridWrapper>
+		results.map(
+			<ResultCard />
+		)
+	</GridWrapper>
+
+
+ResultCard ({result: {}, handleOpenModal}) 
+	<div onClick=handleOpenModal>content</div>
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
